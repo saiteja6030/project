@@ -9,11 +9,11 @@ node{
     	def mvnCMD = "${mvnHome}/bin/mvn"
     	sh "${mvnCMD} clean package"
    	}
-	/*
 	stage('Build Docker Image')
 	{
     	sh 'docker build -t 8639628479/tomcatdocker:tomcatdevops .'
 	}
+	/*
 	stage('Push Docker Image')
 	{
     	withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerHubPwd')]) 
