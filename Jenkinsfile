@@ -11,7 +11,7 @@ node{
    	}
 	stage('Build Docker Image')
 	{
-	sh 'service docker start'
+	sh 'sudo service docker start'
     	sh 'docker build -t 8639628479/tomcatdocker:tomcatdevops .'
 	}
 	
