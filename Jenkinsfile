@@ -29,10 +29,11 @@ node{
 	{
 		try
 		{
+			def dockerstart = ' sudo service docker start'
 			def dockerRm = 'docker rm -f tomcatcontainer'
 			sshagent(['dev-server'])
 			{
-				sh 'sudo service docker start'
+				sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.86.255 ${dockerstart}"
 				sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.86.255 ${dockerRm}"
 			}
 		}
