@@ -22,13 +22,13 @@ node{
     	}
     	sh 'docker push 8639628479/tomcatdocker:tomcatdevops'
 	}
-	/*
+	
 	stage('Remove Previous Container')
 	{
 		try
 		{
 			def dockerRm = 'docker rm -f tomcatdocker'
-			sshagent(['docker-dev'])
+			sshagent(['dev-server'])
 			{
 				sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.77.130 ${dockerRm}"
 			}
@@ -41,11 +41,11 @@ node{
 	stage('Deploy to Dev Environment')
 	{
    		def dockerRun = 'docker run -d --name tomcatcontainer -p 8080:8080 8639628479/tomcatdocker:tomcatdevops'
-    	sshagent(['docker-dev']) 
+    	sshagent(['dev-server']) 
     	{
     		sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.77.130 ${dockerRun}"
    		}
 
  	}
-*/
+
 }
