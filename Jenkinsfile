@@ -13,15 +13,16 @@ node{
 	{
     	sh 'docker build -t 8639628479/tomcatdocker:tomcatdevops .'
 	}
-	/*
+	
 	stage('Push Docker Image')
 	{
-    	withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerHubPwd')]) 
+    	withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) 
     	{
         	sh "docker login -u 8639628479 -p ${dockerHubPwd}"
     	}
     	sh 'docker push 8639628479/tomcatdocker:tomcatdevops'
 	}
+	/*
 	stage('Remove Previous Container')
 	{
 		try
