@@ -11,6 +11,9 @@ node{
    	}
 	stage('Build Docker Image')
 	{
+	sh 'sudo usermod -aG docker ec2-user'
+	sh 'sudo chmod 777 /var/run/docker.sock'
+	sh 'sudo systemctl restart jenkins'
     	sh 'docker build -t 8639628479/tomcatdocker:tomcatdevops .'
 	}
 	
@@ -22,6 +25,7 @@ node{
     	}
     	sh 'docker push 8639628479/tomcatdocker:tomcatdevops'
 	}
+	/*
 	stage('Remove Previous container')
 	{
 		try
@@ -61,6 +65,6 @@ node{
     		sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.86.255 ${dockerRun}"
    		}
 
- 	}
+ 	}*/
 
 }
