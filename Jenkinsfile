@@ -30,7 +30,7 @@ node{
 			def dockerRm = 'docker rm -f tomcatdocker'
 			sshagent(['dev-server'])
 			{
-				sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.77.130 ${dockerRm}"
+				sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.86.255 ${dockerRm}"
 			}
 		}
 		catch(error)
@@ -43,7 +43,7 @@ node{
    		def dockerRun = 'docker run -d --name tomcatcontainer -p 8080:8080 8639628479/tomcatdocker:tomcatdevops'
     	sshagent(['dev-server']) 
     	{
-    		sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.77.130 ${dockerRun}"
+    		sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.86.255 ${dockerRun}"
    		}
 
  	}
