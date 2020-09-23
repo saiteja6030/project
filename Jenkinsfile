@@ -27,7 +27,7 @@ node{
 	{
 		try
 		{
-			def dockerRm = 'docker rm -f tomcatdocker'
+			def dockerRm = 'docker rm -f 8639628479/tomcatdocker'
 			sshagent(['dev-server'])
 			{
 				sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.86.255 ${dockerRm}"
