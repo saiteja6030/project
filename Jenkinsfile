@@ -23,7 +23,8 @@ node{
     	}
     	sh 'docker push 8639628479/tomcatdocker:tomcatdevops'
 	}
-	/*
+	
+	
 	stage('Remove Previous container')
 	{
 		try
@@ -31,6 +32,7 @@ node{
 			def dockerRm = 'docker rm -f tomcatcontainer'
 			sshagent(['dev-server'])
 			{
+				sh 'sudo service docker start'
 				sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.86.255 ${dockerRm}"
 			}
 		}
@@ -42,6 +44,7 @@ node{
 	
 	stage('Remove Previous Image')
 	{
+		
 		try
 		{
 			def dockerRm = 'docker rmi -f 8639628479/tomcatdocker:tomcatdevops'
@@ -63,6 +66,6 @@ node{
     		sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.86.255 ${dockerRun}"
    		}
 
- 	}*/
+ 	}
 
 }
