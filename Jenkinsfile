@@ -11,7 +11,7 @@ node{
    	}
 	stage('Build Docker Image')
 	{
-    	sh 'sudo docker build -t 8639628479/tomcatdocker:tomcatdevops .'
+    	sh 'docker build -t 8639628479/tomcatdocker:tomcatdevops .'
 	}
 	/*
 	stage('Push Docker Image')
