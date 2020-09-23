@@ -11,9 +11,9 @@ node{
    	}
 	stage('Build Docker Image')
 	{
-	sh 'sudo usermod -aG docker ec2-user'
-	sh 'sudo chmod 777 /var/run/docker.sock'
-	sh 'sudo systemctl restart jenkins'
+	sh 'usermod -aG docker ec2-user'
+	sh 'chmod 777 /var/run/docker.sock'
+	sh 'systemctl restart jenkins'
     	sh 'docker build -t 8639628479/tomcatdocker:tomcatdevops .'
 	}
 	
