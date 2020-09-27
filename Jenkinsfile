@@ -31,10 +31,10 @@ node{
 		{
 			def dockerstart = ' sudo service docker start'
 			def dockerRm = 'docker rm -f tomcatcontainer'
-			sshagent(['dev-server'])
+			sshagent(['private'])
 			{
-				sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.86.255 ${dockerstart}"
-				sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.86.255 ${dockerRm}"
+				sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.38.32 ${dockerstart}"
+				sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.38.32 ${dockerRm}"
 			}
 		}
 		catch(error)
@@ -49,9 +49,9 @@ node{
 		try
 		{
 			def dockerRm = 'docker rmi -f 8639628479/tomcatdocker:tomcatdevops'
-			sshagent(['dev-server'])
+			sshagent(['private'])
 			{
-				sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.86.255 ${dockerRm}"
+				sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.38.32 ${dockerRm}"
 			}
 		}
 		catch(error)
@@ -62,9 +62,9 @@ node{
 	stage('Deploy to Dev Environment')
 	{
    		def dockerRun = 'docker run -d --name tomcatcontainer -p 8080:8080 8639628479/tomcatdocker:tomcatdevops'
-    	sshagent(['dev-server']) 
+    	sshagent(['private']) 
     	{
-    		sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.86.255 ${dockerRun}"
+    		sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.38.32 ${dockerRun}"
    		}
 
  	}
