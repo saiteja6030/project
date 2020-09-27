@@ -17,7 +17,7 @@ node{
 	
 	stage('Push Docker Image')
 	{
-    	withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) 
+    	withCredentials([string(credentialsId: 'dockerpwd', variable: 'dockerHubPwd')]) 
     	{
         	sh "docker login -u 8639628479 -p ${dockerHubPwd}"
     	}
