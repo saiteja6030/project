@@ -1,7 +1,7 @@
 node{
 	stage('SCM Checkout')
  	{
-       git branch: 'master', url: 'https://github.com/saiteja6030/JavaWebCalculator.git'
+       git branch: 'master', url: 'https://github.com/saiteja6030/project.git'
 	}
 	stage('Mvn Package')
 	{
